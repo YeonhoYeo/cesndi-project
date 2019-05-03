@@ -29,5 +29,6 @@ HELP.md
 ### VS Code ###
 .vscode/
 
-### Git SSH ###
-/.ssh
+### Etc ###
+nohup.out
+
