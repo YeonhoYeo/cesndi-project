@@ -14,12 +14,11 @@ cache:
 
 script: "./gradlew clean build"
 
-# CI 실행 완료시 메일로 알람
-notifications:
-  email:
-    recipients:
-      - yoyonho@naver.com 
-
+before_deploy:
+  - zip -r cesndi-project *
+  - mkdir -p deploy
+  - mv cesndi-project.zip deploy/cesndi-project.zip
+  
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
@@ -28,7 +27,14 @@ deploy:
     region: ap-northeast-2
     skip_cleanup: true
     acl: public_read
+    local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
     on:
       repo: YeonhoYeo/cesndi-project #Github 주소
       branch: master
+
+# CI 실행 완료시 메일로 알람
+notifications:
+  email:
+    recipients:
+      - yoyonho@naver.com 
