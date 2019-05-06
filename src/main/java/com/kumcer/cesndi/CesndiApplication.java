@@ -10,7 +10,7 @@ public class CesndiApplication {
 
     public static final String APPLICATION_LOCATIONS = "spring.config.location="
             + "classpath:application.yml,"
-            + "/app/config/cesndi-project/real-application.yml";
+            + "/home/ec2-user/app/config/cesndi-project/real-application.yml";
     // + "C:\\develop\\project\\config\\cesndi-project\\real-application.yml";
 
     public static void main(String[] args) {
